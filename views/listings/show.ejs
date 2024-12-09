@@ -77,11 +77,12 @@ const coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>;
           <h5 class="card-title"> @<%= review.author.username %></h5>
            <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
           <p class="card-text"> <%= review.comment %></p>
-          <% if (review.author && review.author._id.equals(currUser._id)) { %>
+          <% if (currUser && review.author && review.author._id.equals(currUser._id)) { %>
             <form action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" class="mb-2">
               <button class="btn btn-sm btn-dark">Delete</button>
             </form>
-          <% } %>          
+          <% } %>
+                    
         </div>
        </div>
       <% } %>
